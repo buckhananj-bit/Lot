@@ -3,82 +3,247 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Diamonds Parking</title>
+  <title>Diamonds Parking - Lot A678</title>
 
   <style>
     :root{
-      --bg:#f4f6f8; --card:#fff; --text:#111827; --muted:#6b7280; --line:#e5e7eb;
-      --banner:#d7eef3; --bannerText:#1f2937;
-      --primary:#0ea5b7; --primaryDark:#0b7f8d; --apple:#111111; --paypal:#f4c542;
+      --bg: #f4f6f8;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+
+      --banner: #d7eef3;
+      --bannerText: #1f2937;
+
+      --primary: #0ea5b7;
+      --primaryDark: #0b7f8d;
+      --apple: #111111;
+      --paypal: #f4c542;
+
+      --radius: 14px;
     }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
-    .wrap{max-width:520px;margin:0 auto;min-height:100vh;background:var(--bg)}
-    .hero{position:relative;height:155px;overflow:hidden;background:#111}
-    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.65),rgba(0,0,0,.2)),url("../assets/hero-cars.jpg") center/cover no-repeat}
-    .heroInner{position:relative;height:100%;display:flex;align-items:center;gap:14px;padding:18px;color:#fff}
-    .badge{width:62px;height:62px;border-radius:14px;background:#0b5fa8;display:grid;place-items:center;border:2px solid rgba(255,255,255,.15);flex:0 0 auto}
-    .badge span{font-weight:800;font-size:34px;line-height:1}
-    .heroText h1{margin:0;font-size:18px;letter-spacing:.2px}
-    .heroText p{margin:6px 0 0;font-size:14px;opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:360px}
-    .banner{background:var(--banner);color:var(--bannerText);padding:12px 16px;font-size:13px;letter-spacing:.2px;border-bottom:1px solid rgba(0,0,0,.04);text-transform:uppercase}
-    .card{padding:16px}
-    .fieldLabelRow{display:flex;justify-content:space-between;align-items:center;margin-top:6px;margin-bottom:6px}
-    .fieldLabelRow .label{font-weight:700;font-size:16px}
-    .scanBtn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#e11d48;background:transparent;border:none;padding:8px;border-radius:10px;cursor:pointer}
-    .scanBtn:hover{background:rgba(225,29,72,.08)}
-    .input,.select{width:100%;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:14px;font-size:16px;outline:none}
-    .input:focus,.select:focus{border-color:rgba(14,165,183,.55);box-shadow:0 0 0 4px rgba(14,165,183,.12)}
-    .sectionTitle{font-weight:700;font-size:16px;margin:18px 0 10px}
-    .mutedRow{display:flex;justify-content:space-between;align-items:center;margin-top:14px;color:var(--muted);font-size:14px}
-    .linkish{color:#d12b53;font-weight:600;cursor:pointer;user-select:none}
-    .totals{margin-top:16px;border-top:1px solid var(--line);padding-top:16px;display:flex;justify-content:space-between;align-items:baseline}
-    .totals .totalLabel{font-weight:800;font-size:18px;letter-spacing:.2px}
-    .totals .totalValue{font-weight:800;font-size:22px}
-    .terms{margin-top:18px;font-size:13px;color:var(--muted);text-align:center}
-    .terms a{color:#0b6b93;text-decoration:none;font-weight:600}
-    .terms a:hover{text-decoration:underline}
-    .btn{width:100%;border-radius:12px;padding:14px 16px;font-size:16px;font-weight:700;border:none;cursor:pointer;margin-top:12px}
-    .btnApple{background:#111;color:#fff}
-    .or{text-align:center;color:var(--muted);font-size:12px;margin:14px 0 4px;letter-spacing:.2px;text-transform:uppercase}
-    .btnPrimary{background:var(--primary);color:#fff}
-    .btnPrimary:hover{background:var(--primaryDark)}
-    .btnPayPal{background:var(--paypal);color:#123}
-    .error{margin-top:10px;padding:10px 12px;border-radius:12px;background:rgba(225,29,72,.08);color:#9f1239;font-size:14px;display:none}
-    .footerPad{height:26px}
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .wrap {
+      max-width: 520px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: var(--bg);
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 155px;
+      overflow: hidden;
+      background: #111;
+    }
+    .hero::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.65), rgba(0,0,0,.2)),
+        /* If this file is in /lots/, use ../assets/hero-cars.jpg
+           If this file is in repo root, use assets/hero-cars.jpg */
+        url("assets/hero-cars.jpg") center/cover no-repeat;
+    }
+    .heroInner {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px;
+      color: #fff;
+    }
+    .badge {
+      width: 62px;
+      height: 62px;
+      border-radius: 14px;
+      background: #0b5fa8;
+      display: grid;
+      place-items: center;
+      border: 2px solid rgba(255,255,255,.15);
+      flex: 0 0 auto;
+    }
+    .badge span{
+      font-weight: 800;
+      font-size: 34px;
+      line-height: 1;
+    }
+    .heroText h1 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: .2px;
+    }
+    .heroText p {
+      margin: 6px 0 0;
+      font-size: 14px;
+      opacity: .9;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 360px;
+    }
+
+    /* BANNER */
+    .banner {
+      background: var(--banner);
+      color: var(--bannerText);
+      padding: 12px 16px;
+      font-size: 13px;
+      letter-spacing: .2px;
+      border-bottom: 1px solid rgba(0,0,0,.04);
+      text-transform: uppercase;
+    }
+
+    .card { padding: 16px; }
+
+    .sectionTitle {
+      font-weight: 700;
+      font-size: 16px;
+      margin: 18px 0 10px;
+    }
+
+    .fieldLabelRow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6px;
+      margin-bottom: 6px;
+    }
+    .fieldLabelRow .label {
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .scanBtn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #e11d48;
+      background: transparent;
+      border: none;
+      padding: 8px 8px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .scanBtn:hover { background: rgba(225,29,72,.08); }
+
+    .input, .select {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: 12px;
+      padding: 14px 14px;
+      font-size: 16px;
+      outline: none;
+    }
+    .input:focus, .select:focus {
+      border-color: rgba(14,165,183,.55);
+      box-shadow: 0 0 0 4px rgba(14,165,183,.12);
+    }
+
+    .mutedRow {
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .linkish {
+      color: #d12b53;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .totals {
+      margin-top: 16px;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+      display:flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .totals .totalLabel {
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: .2px;
+    }
+    .totals .totalValue {
+      font-weight: 800;
+      font-size: 22px;
+    }
+
+    .terms {
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+    }
+    .terms a { color: #0b6b93; text-decoration: none; font-weight: 600; }
+    .terms a:hover { text-decoration: underline; }
+
+    .btn {
+      width: 100%;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+    .btnApple { background: var(--apple); color: #fff; }
+    .btnPrimary { background: var(--primary); color: #fff; }
+    .btnPrimary:hover { background: var(--primaryDark); }
+    .btnPayPal { background: var(--paypal); color: #123; }
+
+    .or {
+      text-align:center;
+      color: var(--muted);
+      font-size: 12px;
+      margin: 14px 0 4px;
+      letter-spacing: .2px;
+      text-transform: uppercase;
+    }
+
+    .error {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(225,29,72,.08);
+      color: #9f1239;
+      font-size: 14px;
+      display: none;
+    }
+
+    .footerPad { height: 26px; }
   </style>
 </head>
 
 <body>
-  <!-- =========================
-       LOT CONFIG (EDIT THIS)
-       ========================= -->
-  <script>
-    const LOT = {
-      operatorTitle: "Diamonds Parking Seattle",
-      zone: "A0883",
-      addressShort: "1750 Occidental Ave S",
-      // Pricing mode: "STANDARD" (hourly options) or "EVENT" (one flat rate)
-      mode: "STANDARD",
-      eventFlatRate: 30.00,       // used only when mode = "EVENT"
-      serviceFeeFlat: 0.50
-    };
-
-    const RATES_STANDARD = [
-      { id:"1hr", label:"1 Hour", fee:6.24 },
-      { id:"2hr", label:"2 Hour", fee:10.50 },
-      { id:"4hr", label:"4 Hour", fee:18.99 },
-      { id:"8hr", label:"8 Hour", fee:24.99 }
-    ];
-  </script>
-
   <div class="wrap">
     <div class="hero">
       <div class="heroInner">
         <div class="badge" aria-hidden="true"><span>P</span></div>
         <div class="heroText">
-          <h1 id="operatorTitle"></h1>
-          <p id="zoneLine"></p>
+          <h1>Diamonds Parking Seattle</h1>
+          <!-- Edit this line anytime -->
+          <p id="zoneLine">A678 • Lot A678</p>
         </div>
       </div>
     </div>
@@ -88,15 +253,197 @@
     <div class="card">
       <div class="fieldLabelRow">
         <div class="label">Plate Number</div>
-        <button class="scanBtn" id="scanPlateBtn" type="button"><span>📷</span><span>Scan Plate</span></button>
+        <button class="scanBtn" id="scanPlateBtn" type="button" title="Scan Plate">
+          <span aria-hidden="true">📷</span>
+          <span>Scan Plate</span>
+        </button>
       </div>
-      <input class="input" id="plateInput" placeholder="Enter plate number" />
+
+      <input class="input" id="plateInput" inputmode="text" autocomplete="off" placeholder="Enter plate number" />
 
       <div class="sectionTitle">Choose Rate</div>
       <select class="select" id="rateSelect">
         <option value="" selected disabled>Select Rate</option>
       </select>
 
-      <div class="mutedRow"><div>Parking Fees (Tax Incl)</div><div id="parkingFee">—</div></div>
-      <div class="mutedRow"><div>Service Fee</div><div id="serviceFee">—</div></div>
-      <div class="mutedRow"><div class="linkish" id="
+      <div class="mutedRow">
+        <div>Parking Fees (Tax Incl)</div>
+        <div id="parkingFee">—</div>
+      </div>
+
+      <div class="mutedRow">
+        <div>Service Fee</div>
+        <div id="serviceFee">—</div>
+      </div>
+
+      <div class="mutedRow">
+        <div class="linkish" id="promoLink">Add Promo</div>
+        <div id="promoValue">—</div>
+      </div>
+
+      <div class="totals">
+        <div class="totalLabel">TOTAL</div>
+        <div class="totalValue" id="totalValue">—</div>
+      </div>
+
+      <div class="error" id="errorBox"></div>
+
+      <div class="terms">
+        By purchasing, you agree to <a href="/terms.html" target="_blank" rel="noopener">Terms and Conditions</a>
+        &nbsp;and&nbsp;
+        <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+      </div>
+
+      <button class="btn btnApple" id="applePayBtn" type="button"> Pay</button>
+
+      <div class="or">OR</div>
+
+      <button class="btn btnPrimary" id="cardPayBtn" type="button">Pay with Credit Card</button>
+      <button class="btn btnPayPal" id="paypalBtn" type="button">PayPal</button>
+    </div>
+
+    <div class="footerPad"></div>
+  </div>
+
+  <script>
+    // =========================
+    // EVENT-ONLY SETTINGS
+    // =========================
+    const MODE = "EVENT";          // Event-only: no other options
+    const SERVICE_FEE_FLAT = 0.50; // set to 0 to remove
+    const EVENT_FLAT_RATE = 75.00; // your event price
+
+    // Stripe Payment Link (event)
+    const STRIPE_LINKS = {
+      "event": "https://buy.stripe.com/eVqeVdbgV1zu94fahhdIA0q"
+    };
+
+    // Only one option shown
+    const RATES_EVENT = [
+      { id: "event", label: "Event", fee: EVENT_FLAT_RATE }
+    ];
+
+    let promoDiscount = 0.00;
+
+    // =========================
+    // APP LOGIC
+    // =========================
+    const rateSelect = document.getElementById("rateSelect");
+    const parkingFeeEl = document.getElementById("parkingFee");
+    const serviceFeeEl = document.getElementById("serviceFee");
+    const totalEl = document.getElementById("totalValue");
+    const promoValueEl = document.getElementById("promoValue");
+    const errorBox = document.getElementById("errorBox");
+
+    function money(n){
+      return new Intl.NumberFormat("en-US", { style:"currency", currency:"USD" }).format(n);
+    }
+
+    function clearError(){
+      errorBox.style.display = "none";
+      errorBox.textContent = "";
+    }
+
+    function showError(msg){
+      errorBox.style.display = "block";
+      errorBox.textContent = msg;
+    }
+
+    function mountRates(){
+      rateSelect.innerHTML = `<option value="" selected disabled>Select Rate</option>`;
+      for (const r of RATES_EVENT){
+        const opt = document.createElement("option");
+        opt.value = r.id;
+        opt.textContent = r.label;
+        opt.dataset.fee = String(r.fee);
+        rateSelect.appendChild(opt);
+      }
+    }
+
+    function updateTotals(){
+      const opt = rateSelect.options[rateSelect.selectedIndex];
+      const feeStr = opt?.dataset?.fee;
+
+      if (!feeStr){
+        parkingFeeEl.textContent = "—";
+        serviceFeeEl.textContent = "—";
+        promoValueEl.textContent = "—";
+        totalEl.textContent = "—";
+        return;
+      }
+
+      const parkingFee = Number(feeStr);
+      const serviceFee = SERVICE_FEE_FLAT;
+      const total = Math.max(0, parkingFee + serviceFee - promoDiscount);
+
+      parkingFeeEl.textContent = money(parkingFee);
+      serviceFeeEl.textContent = money(serviceFee);
+      promoValueEl.textContent = promoDiscount > 0 ? "-" + money(promoDiscount) : "—";
+      totalEl.textContent = money(total);
+    }
+
+    function validate(){
+      clearError();
+      const plate = document.getElementById("plateInput").value.trim();
+      const rate = rateSelect.value;
+
+      if (!plate){
+        showError("Please enter a plate number.");
+        return false;
+      }
+      if (!rate){
+        showError("Please select a rate.");
+        return false;
+      }
+      return true;
+    }
+
+    function goToStripe(){
+      if (!validate()) return;
+
+      const rate = rateSelect.value;
+      const stripeUrl = STRIPE_LINKS[rate];
+
+      if (!stripeUrl){
+        showError("Payment option not available.");
+        return;
+      }
+
+      window.location.href = stripeUrl;
+    }
+
+    // Optional promo stub
+    document.getElementById("promoLink").addEventListener("click", () => {
+      const code = window.prompt("Enter promo code:");
+      if(!code) return;
+
+      if(code.trim().toUpperCase() === "PARK5"){
+        promoDiscount = 5.00;
+      } else {
+        promoDiscount = 0.00;
+        alert("Promo code not recognized.");
+      }
+      updateTotals();
+    });
+
+    // Scan Plate stub
+    document.getElementById("scanPlateBtn").addEventListener("click", () => {
+      alert("Scan Plate is a placeholder.");
+    });
+
+    // Pay buttons → Stripe
+    document.getElementById("applePayBtn").addEventListener("click", goToStripe);
+    document.getElementById("cardPayBtn").addEventListener("click", goToStripe);
+    document.getElementById("paypalBtn").addEventListener("click", goToStripe);
+
+    rateSelect.addEventListener("change", updateTotals);
+
+    // Init
+    mountRates();
+
+    // Auto-select Event so user doesn't have to open dropdown
+    rateSelect.value = "event";
+    updateTotals();
+  </script>
+</body>
+</html>
